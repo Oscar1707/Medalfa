@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Farmacia</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ 	<script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="  crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"     rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<script type="text/javascript">
+window.onload = function(){
+	  var fecha = new Date(); //Fecha actual
+	  var mes = fecha.getMonth()+1; //obteniendo mes
+	  var dia = fecha.getDate(); //obteniendo dia
+	  var ano = fecha.getFullYear(); //obteniendo año
+	  if(dia<10)
+	    dia='0'+dia; //agrega cero si el menor de 10
+	  if(mes<10)
+	    mes='0'+mes //agrega cero si el menor de 10
+	  document.getElementById('date').value=ano+"-"+mes+"-"+dia;
+	}
+</script>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<img alt="logo" src="./image/logo_app.png" width="10%">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/inventory">Consultar</a>
+      </li>
+  
+    </ul>
+
+  </div>
+</nav>
+	<div class="container">
+	
+	<h1 >Agregar Farmacos</h1>
+	<hr>
+	<form action="#" th:action="@{/register}" th:object="${greeting}" method="post">
+	<div class="input-group mb-3">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text" id="basic-addon1">@</span>
+	  </div>
+	        <input type="text" class="form-control"  th:field="*{name}" placeholder="Nombre del Medicamento" required="required" >
+	        
+	</div>
+	<div class="input-group mb-3">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text" id="basic-addon1">@</span>
+	  </div>
+	  <input type="text" class="form-control" th:field="*{specif}" placeholder="Descrición" required="required">
+	</div>
+	 
+	<div class="input-group mb-3">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text" id="basic-addon1">@</span>
+	  </div>
+	<input type="text" class="form-control" th:field="*{lote}" placeholder="Lote" required="required" >
+	</div>
+	<div class="row">
+	<div class="col-sm-6">
+	<label for="date">Fecha</label>
+	<div class="input-group mb-3">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text" id="basic-addon1">@</span>
+	  </div>
+		<input type="date" class="form-control" th:field="*{date}" required="required">	
+	</div>
+	</div>
+	<div class="col-sm-6">
+	 <label for="cantid">Cantidad</label>
+	<div class="input-group mb-3">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text" id="basic-addon1">@</span>
+	  </div>
+	<input type="number" class="form-control" th:field="*{cantid}" placeholder="Cantidad" required="required" >
+	</div>
+	</div>
+	</div>
+	<button class="btn btn-success">Agregar</button>
+	</form>
+	</div>
+	
+	 	
+  
+</body>

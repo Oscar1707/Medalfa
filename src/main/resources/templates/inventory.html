@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inventario</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script src="./js/ajaxBuscarFarmaco.js"></script>
+		<script src="./js/jquery3.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<img alt="logo" src="./image/logo_app.png" width="10%">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Ingresar Farmaco</a>
+      </li>
+  
+    </ul>
+
+  </div>
+</nav>
+	<div class="container">
+	<h1>INVENTARIO</h1>
+	<hr>
+	
+		<form action="#" th:action="@{/register}" th:object="${greeting}" method="post">
+	
+    	<div class="input-group mb-3">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text" id="basic-addon1">@</span>
+	  </div>
+	  <input type="text" class="form-control"  placeholder="Buscar Farmaco" required="required">
+	  
+	  <button class="btn btn-success"  onclick="notify();">Buscar</button>
+	</div>
+	    </form>
+	    
+	    <table class="table">
+	    <thead>
+	    <tr>
+		    <th>Id</th>
+		    <th>Nombre</th>
+		    <th>Descripción</th>
+		    <th>Cantidad</th>
+		    <th>Lote</th>
+		    <th>Fecha</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	    	<th:block th:each="list : ${listars}">
+	    	<tr>
+	    	<td th:text="${list.id}">...</td>
+	    	<td th:text="${list.name}">...</td>
+	    	<td th:text="${list.specif}">...</td>
+	    	<td th:text="${list.cantid}">...</td>
+	    	<td th:text="${list.lote}">...</td>
+	    	<td th:text="${list.date}">...</td>
+	    	</tr>
+	    	</th:block>
+	    	</tbody>
+	    </table>
+	</div>
+	<div id="mostrartable"></div>
+</body>
+
